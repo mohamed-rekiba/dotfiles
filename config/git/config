@@ -1,0 +1,108 @@
+[include]
+	# user.name and user.email. install.sh writes this file; it is not tracked.
+	path = local
+
+[init]
+	defaultBranch = main
+
+[core]
+	# Global ignore file: ~/.config/git/ignore is the default with this layout.
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+	untrackedCache = true
+	precomposeunicode = true
+
+[column]
+	ui = auto
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = version:refname
+	gpgSign = true
+
+[commit]
+	gpgsign = true
+	verbose = true
+
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	renames = copies
+	mnemonicPrefix = true
+
+[diff "bin"]
+	textconv = hexdump -v -C
+
+[merge]
+	conflictstyle = zdiff3
+	log = true
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+
+[pull]
+	rebase = true
+
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[help]
+	autocorrect = prompt
+
+[apply]
+	whitespace = fix
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red
+	new = green
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[url "git@github.com:"]
+	insteadOf = "gh:"
+
+[alias]
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	s = status -s
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	p = pull --recurse-submodules
+	c = clone --recursive
+	ca = !git add -A && git commit -av
+	go = "!f() { git switch -c \"$1\" 2> /dev/null || git switch \"$1\"; }; f"
+	tags = tag -l
+	branches = branch --all
+	remotes = remote --verbose
+	aliases = config --get-regexp alias
+	amend = commit --amend --reuse-message=HEAD
+	reb = "!r() { git rebase -i HEAD~$1; }; r"
+	fb = "!f() { git branch -a --contains $1; }; f"
+	ft = "!f() { git describe --always --contains $1; }; f"
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+	contributors = shortlog --summary --numbered
+	whoami = config user.email

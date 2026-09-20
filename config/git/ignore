@@ -1,0 +1,17 @@
+# Global ignore list: things that belong to the machine, not the project.
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Editors and tools
+*.swp
+.idea/
+.vscode/
+**/.claude/settings.local.json

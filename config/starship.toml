@@ -1,0 +1,34 @@
+# Prompt layout: arrow, current directory name, git branch and state.
+# Only the listed modules run, which keeps the prompt fast.
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = "$character$directory$git_branch$git_status"
+add_newline = false
+command_timeout = 500
+
+[character]
+success_symbol = "[➜](bold cyan)"
+error_symbol = "[➜](bold red)"
+
+[directory]
+truncation_length = 1
+truncate_to_repo = false
+style = "cyan"
+format = "[$path]($style) "
+
+[git_branch]
+format = "[git:\\(](blue)[$branch](red)[\\)](blue) "
+
+[git_status]
+style = "bold yellow"
+format = "([$all_status$ahead_behind]($style) )"
+modified = "!"
+untracked = "?"
+staged = "+"
+deleted = "x"
+renamed = "»"
+conflicted = "="
+stashed = "\\$"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕"

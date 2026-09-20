@@ -1,0 +1,76 @@
+" Vim 9.1+ reads this file from ~/.config/vim/vimrc and puts that directory
+" on the runtimepath, so colors/ and syntax/ next to it are found.
+
+" Solarized Dark
+set background=dark
+colorscheme solarized
+let g:solarized_termtrans=1
+
+set clipboard=unnamed            " use the system clipboard
+set wildmenu                     " command-line completion menu
+set backspace=indent,eol,start
+set gdefault                     " s/x/y/ replaces every match on the line
+set encoding=utf-8 nobomb
+let mapleader=","
+
+" Keep files as they are: no added trailing newline.
+set binary
+set noeol
+
+" Backups, swap files and undo history go to the cache dir, not next to files.
+let s:cache = ($XDG_CACHE_HOME != '' ? $XDG_CACHE_HOME : $HOME . '/.cache') . '/vim'
+for s:dir in ['backup', 'swap', 'undo']
+	silent! call mkdir(s:cache . '/' . s:dir, 'p')
+endfor
+let &backupdir = s:cache . '/backup'
+let &directory = s:cache . '/swap'
+let &undodir = s:cache . '/undo'
+set undofile
+set backupskip=/tmp/*,/private/tmp/*
+
+set modeline
+set modelines=4
+set exrc                         " per-directory .vimrc
+set secure                       " ... with unsafe commands disabled
+
+" Display
+syntax on
+set number
+set relativenumber
+set cursorline
+set tabstop=2
+set list
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set laststatus=2
+set ruler
+set showcmd
+set showmode
+set title
+set shortmess=atI                " no intro message
+set scrolloff=3
+set nostartofline
+set noerrorbells
+set mouse=a
+
+" Search
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+
+" Strip trailing whitespace: ,ss
+function! StripWhitespace()
+	let save_cursor = getpos(".")
+	let old_query = getreg('/')
+	:%s/\s\+$//e
+	call setpos('.', save_cursor)
+	call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
+
+" Save a file as root: ,W
+noremap <leader>W :w !sudo tee % > /dev/null<CR>
+
+filetype plugin indent on
+autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
