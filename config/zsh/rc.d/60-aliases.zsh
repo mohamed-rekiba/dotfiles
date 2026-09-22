@@ -38,10 +38,11 @@ alias gsw='git switch'
 # Kubernetes and Docker
 alias k='kubectl'
 alias kradar='kubectl radar'
+alias dcls='docker system prune -af --volumes && docker builder prune -af && docker buildx history rm --all && docker system df'
 
 # Homebrew and macOS updates
-alias brewup='brew update && brew upgrade && brew cleanup && brew doctor'
-alias update='sudo softwareupdate -i -a; brewup'
+alias brewup='brew update && brew upgrade --greedy && brew cleanup && brew doctor'
+alias update='sudo softwareupdate -i -a; brewup; gcloud components update'
 
 # Network
 alias ip='dig +short myip.opendns.com @resolver1.opendns.com'

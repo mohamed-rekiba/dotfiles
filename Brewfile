@@ -46,9 +46,12 @@ brew "kubernetes-cli"
 brew "node"
 brew "python"
 brew "yq"
-cask "google-cloud-sdk"
+cask "gcloud-cli"
 
 # Development of this repository
 brew "bats-core"
 brew "shellcheck"
 brew "markdownlint-cli"
+
+# Network
+brew "iproute2mac" # ss show open ports, netstat, etc.
