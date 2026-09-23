@@ -65,9 +65,10 @@ The installer creates them and never overwrites them.
 | `~/.config/git/local` | `user.name`, `user.email`, and any git override. |
 | `~/.config/zsh/local.zsh` | Aliases, exports or secrets. Sourced last. |
 
-Claude Code is the one exception to linking: `~/.claude/CLAUDE.md` is a
-link, but `~/.claude/settings.json` is copied once, because Claude Code
-writes machine-local permission grants into it.
+Claude Code is the one exception to linking: `~/.claude/CLAUDE.md` and
+`~/.claude/CODING_STANDARDS.md` are links, but `~/.claude/settings.json` is
+copied once, because Claude Code writes machine-local permission grants into
+it.
 
 ### Defaults you may want to change
 
@@ -94,7 +95,7 @@ These are deliberate choices. Each one is a single line in a local file.
 | `config/tmux/` | `~/.config/tmux/` | tmux, prefix `Ctrl+A`. |
 | `config/vim/` | `~/.config/vim/` | Vim 9.1 with Solarized. |
 | `config/ccstatusline/` | `~/.config/ccstatusline/` | Claude Code status line. |
-| `claude/` | `~/.claude/` | Claude Code instructions and seed settings. |
+| `claude/` | `~/.claude/` | Claude Code instructions, coding standards, and seed settings. |
 | `install.sh` | | The symlink installer. `install.sh -y` never prompts. |
 | `Brewfile` | | Packages for `brew bundle`. |
 | `macos.sh` | | macOS defaults. |

@@ -63,9 +63,10 @@ setup() {
 	[ -L "$HOME/.config/zsh/rc.d/foreign.zsh" ]
 }
 
-@test "links CLAUDE.md but copies settings.json only once" {
+@test "links the claude Markdown files but copies settings.json only once" {
 	install_quiet
 	assert_symlink_to "$HOME/.claude/CLAUDE.md" "$DOTFILES/claude/CLAUDE.md"
+	assert_symlink_to "$HOME/.claude/CODING_STANDARDS.md" "$DOTFILES/claude/CODING_STANDARDS.md"
 	[ -f "$HOME/.claude/settings.json" ]
 	[ ! -L "$HOME/.claude/settings.json" ]
 	echo '{"mine":1}' > "$HOME/.claude/settings.json"

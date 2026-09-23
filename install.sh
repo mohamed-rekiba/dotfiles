@@ -4,7 +4,7 @@
 #
 #   home/<file>    -> ~/<file>
 #   config/<path>  -> ${XDG_CONFIG_HOME:-~/.config}/<path>
-#   claude/        -> ~/.claude (CLAUDE.md linked, settings.json copied once)
+#   claude/        -> ~/.claude (*.md linked, settings.json copied once)
 #
 # Every file is linked on its own, so untracked files can sit next to tracked
 # ones in the same directory. A real file in the way is moved to
@@ -96,11 +96,12 @@ install_links() {
 	done
 }
 
-# CLAUDE.md is safe to link. settings.json is only seeded, because Claude Code
-# writes machine-local permission grants into the live copy.
+# The Markdown files are safe to link. settings.json is only seeded, because
+# Claude Code writes machine-local permission grants into the live copy.
 install_claude() {
 	mkdir -p "$HOME/.claude"
 	link "$DOTFILES/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+	link "$DOTFILES/claude/CODING_STANDARDS.md" "$HOME/.claude/CODING_STANDARDS.md"
 	if [ ! -e "$HOME/.claude/settings.json" ]; then
 		cp "$DOTFILES/claude/settings.json" "$HOME/.claude/settings.json"
 		log "copy   $HOME/.claude/settings.json (seeded once, edit freely)"

@@ -2,6 +2,14 @@
 
 Applies to every project. A project-level `CLAUDE.md` wins on conflict.
 
+## Coding standards
+
+`~/.claude/CODING_STANDARDS.md` holds the rules for code, tests, API design,
+cross-service consistency, commits, docs, and diagrams. Read it when writing
+code that must pass review, and when reviewing (the `code-review` skill reads
+it on the Standards axis). A project-level `CODING_STANDARDS.md` or
+`CONTRIBUTING.md` wins on conflict.
+
 ## Voice
 
 Write like a plain-spoken senior engineer talking to someone who knows the
@@ -43,44 +51,5 @@ note", "it's worth noting".
 
 Ask first for anything outside the obvious scope of the task or hard to
 undo: creating, deleting, or overwriting files; `rm`; force-push; database
-migrations; production config. Commit or push only when asked.
-
-## Code
-
-- Match the style already in the file over any general default.
-- New dependency: ask first.
-- Tautological tests considered harmful. A test that cannot fail when the
-  logic is wrong is not worth writing.
-- Comments say only what cannot be discerned from the code. Keep the
-  articles ("the", "a"); no telegram style.
-
-## Commits
-
-- Conventional Commits, subject line only. Add a body only when asked.
-- Match the scope style already in the repo (for example `feat(frontend):`).
-- Describe the change a user or reviewer sees, in plain words. The how
-  belongs in the diff.
-
-## Docs (README, ADRs, guides)
-
-- README order: what it is and for whom, does it work (status and test
-  evidence), how to run it, how it's built. Keep that order.
-- Present tense only for what exists. Unfinished work goes under
-  Limitations. Be specific about what does not work and why.
-- A warning or gotcha goes before the command it applies to, not after.
-- Every command in a doc runs from a clean clone. When touching nearby
-  code, update or delete stale commands, screenshots, and numbers.
-- A short section that links to detail beats a long one that repeats it.
-- Update the existing doc. New doc files only when asked.
-
-## Diagrams
-
-- Diagrams are hand-authored SVG files in `docs/images/`, referenced from
-  the doc with a one-sentence text description underneath. No mermaid, no
-  raster images, no external fonts.
-- Style: annotated schematic. Rounded boxes with thin coloured outlines and
-  pale fills. Colour carries meaning: green for structure, blue for auth or
-  flow, orange for unvalidated, red for risk. Numbered circles for steps.
-  Dashed lines for proposed or candidate paths. A legend strip and a
-  one-line caption at the bottom. Sans-serif system fonts only.
-- Render each SVG and look at it before reporting it done.
+migrations; production config; a new dependency. Commit or push only when
+asked.
