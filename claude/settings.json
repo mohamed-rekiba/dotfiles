@@ -32,6 +32,7 @@
   "disableBundledSkills": true,
   "disableWorkflows": true,
   "disableArtifact": true,
+  "cleanupPeriodDays": 2,
   "statusLine": {
     "type": "command",
     "command": "npx -y ccstatusline@latest",
