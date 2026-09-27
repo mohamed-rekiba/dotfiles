@@ -2,13 +2,54 @@
 
 Applies to every project. A project-level `CLAUDE.md` wins on conflict.
 
-## Coding standards
+## Before you write code
 
-`~/.claude/CODING_STANDARDS.md` holds the rules for code, tests, API design,
-cross-service consistency, commits, docs, and diagrams. Read it when writing
-code that must pass review, and when reviewing (the `code-review` skill reads
-it on the Standards axis). A project-level `CODING_STANDARDS.md` or
-`CONTRIBUTING.md` wins on conflict.
+1. Read the sections of `~/.claude/CODING_STANDARDS.md` that match the
+   change. The rules apply while you write, not only at review. A
+   project-level `CODING_STANDARDS.md` or `CONTRIBUTING.md` wins on conflict.
+2. Read the installed source of each library you call (`.venv/`,
+   `node_modules/`), or its docs for the locked version. Never write an API
+   from memory.
+3. Find the project's check command: lint, types, and tests. Look in the
+   README, `Makefile`, `pyproject.toml`, `package.json`, or the CI config.
+
+## Workflow
+
+- Non-trivial work (new feature, multi-file refactor, any design decision):
+  propose a short plan and wait for an explicit **GO** before writing code.
+  When the user says to work without check-ins, state the plan and start.
+- Trivial fixes (typo, one-line bug, formatting): just do it.
+- Break large tasks into steps. Check in after each step, unless the user
+  said to work without check-ins.
+- Before you report a task done, run the check command and show the result.
+  Verify visual changes yourself: run the page and take a screenshot.
+- Report what you did not do and what you could not verify.
+
+## When blocked
+
+- Unclear requirement, or a task that can't be done cleanly: stop and ask,
+  or leave a stub with a `TODO` comment. Guessing silently and improvised
+  workarounds are out.
+- A request conflicts with a rule here: say so and ask which wins.
+- A fact you can't verify: say you're not sure.
+- The same check, hook, or test fails twice for the same reason: stop.
+  Report what failed, what you tried, and what you need. Do not try a third
+  variant of the same fix.
+- Never make a check pass by weakening it. No deleted or skipped tests, no
+  loosened assertions. A `noqa`, `type: ignore`, or `eslint-disable` needs a
+  reason on the same line.
+
+## Before acting
+
+Ask first for anything outside the obvious scope of the task or hard to
+undo: creating, deleting, or overwriting files outside the task; `rm`;
+force-push; `--no-verify`; database migrations; production config; a new
+dependency. Commit or push only when asked.
+
+## Secrets
+
+Never read `.env` files, keys, or credential files. Never print environment
+variables. Refer to a setting by its variable name; the user sets the value.
 
 ## Voice
 
@@ -30,26 +71,4 @@ Banned: leverage, utilize, robust, seamless, delve, holistic, cutting-edge,
 "at the end of the day", "in today's fast-paced world", "it's important to
 note", "it's worth noting".
 
-## Workflow
-
-- Non-trivial work (new feature, multi-file refactor, any design decision):
-  propose a short plan and wait for an explicit **GO** before writing code.
-- Trivial fixes (typo, one-line bug, formatting): just do it.
-- Break large tasks into steps and check in after each one.
-- Verify visual or behavioural changes yourself (run tests, screenshot the
-  page) before reporting them done.
-
-## When blocked
-
-- Unclear requirement, or a task that can't be done cleanly: stop and ask,
-  or leave a stub with a `TODO` comment. Guessing silently and improvised
-  workarounds are out.
-- A request conflicts with a rule here: say so and ask which wins.
-- A fact you can't verify: say you're not sure.
-
-## Before acting
-
-Ask first for anything outside the obvious scope of the task or hard to
-undo: creating, deleting, or overwriting files; `rm`; force-push; database
-migrations; production config; a new dependency. Commit or push only when
-asked.
+These rules also apply to prose in code, docs, and PRs.
