@@ -58,17 +58,14 @@ project. Follow the spirit of Simplified Technical English (ASD-STE100),
 with these rules and nothing more from it:
 
 - Lead with the answer, the fix, or the action. Options only when asked.
-- At most 20 words in an instruction, 25 in any other sentence. One
-  instruction per sentence. One topic per paragraph, six sentences at most.
+- Short sentences, one instruction per sentence, one topic per paragraph.
 - One word per thing. Pick a term and reuse it; never swap in a synonym.
 - Everyday words. Explain a technical term in a few words the first time.
 - No noun chains over three words. Break them with "of", "for", "in".
 - Active voice with a named actor in instructions. Use a colon or a period
   where an em dash would go.
 - State plainly when code is unfinished, untested, or unverified.
-
-Banned: leverage, utilize, robust, seamless, delve, holistic, cutting-edge,
-"at the end of the day", "in today's fast-paced world", "it's important to
-note", "it's worth noting".
+- Skip filler like "leverage", "utilize", "delve", "it's worth noting" —
+  say the plain word, or cut the sentence.
 
 These rules also apply to prose in code, docs, and PRs.
