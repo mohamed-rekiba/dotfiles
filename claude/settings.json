@@ -1,12 +1,14 @@
 {
   "attribution": {
     "commit": "",
-    "pr": ""
+    "pr": "",
+    "sessionUrl": false
   },
   "permissions": {
     "allow": [
       "Bash",
       "Read",
+      "Write",
       "Edit",
       "Skill",
       "WebSearch",
@@ -18,21 +20,16 @@
       "CronCreate",
       "CronDelete",
       "CronList",
-      "EnterPlanMode",
-      "ExitPlanMode",
       "PushNotification",
       "RemoteTrigger",
-      "ReportFindings",
-      "ScheduleWakeup",
-      "AskUserQuestion"
+      "ScheduleWakeup"
     ]
   },
   "model": "sonnet[1m]",
-  "advisorModel": "fable",
   "disableClaudeAiConnectors": true,
-  "disableBundledSkills": true,
   "disableWorkflows": true,
-  "disableArtifact": true,
+  "enableArtifact": false,
+  "bashOutputMaxChars": 50000,
   "cleanupPeriodDays": 2,
   "statusLine": {
     "type": "command",
@@ -40,7 +37,12 @@
     "padding": 0,
     "refreshInterval": 10
   },
-  "enabledPlugins": {},
+  "enabledPlugins": {
+    "atlassian@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "mattpocock-skills@claude-plugins-official": true
+  },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
       "source": {
@@ -50,12 +52,12 @@
     }
   },
   "effortLevel": "medium",
-  "theme": "dark",
-  "agentPushNotifEnabled": false,
+  "advisorModel": "fable",
   "tui": "fullscreen",
-  "voiceEnabled": true,
   "voice": {
     "enabled": true,
     "mode": "hold"
-  }
+  },
+  "theme": "dark",
+  "agentPushNotifEnabled": false
 }
