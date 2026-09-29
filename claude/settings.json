@@ -27,7 +27,8 @@
       "AskUserQuestion"
     ]
   },
-  "model": "claude-fable-5-1[1m]",
+  "model": "sonnet[1m]",
+  "advisorModel": "fable",
   "disableClaudeAiConnectors": true,
   "disableBundledSkills": true,
   "disableWorkflows": true,
