@@ -46,6 +46,30 @@ undo: creating, deleting, or overwriting files outside the task; `rm`;
 force-push; `--no-verify`; database migrations; production config; a new
 dependency. Commit or push only when asked.
 
+## PR reviews
+
+When I ask you to review a PR, post the result as a GitHub pull request
+review without asking first. Pick the review event from the findings:
+
+- `REQUEST_CHANGES`: at least one finding must be fixed before merge. For
+  example: a bug, wrong behaviour, a security issue, or a missing required
+  test, doc, or CHANGELOG entry.
+- `COMMENT`: no finding blocks the merge yet, but at least one needs an
+  answer from the author before you can decide.
+- `APPROVE`: no findings, or only optional nits.
+- On my own PRs, always use `COMMENT`. GitHub does not let an author
+  approve or request changes on their own PR.
+
+Format:
+
+- Review body: start with "Review summary:", then the highest severity
+  found, then which numbered items to fix before merge and which can wait.
+  Put findings on files outside the diff in the body.
+- Review comments: one inline comment per finding, numbered in order and
+  anchored to a changed line (`side: RIGHT`). Each comment states the
+  issue, then a line that starts with "Suggestion:".
+- Keep comments short and plain. No fluff.
+
 ## Secrets
 
 Never read `.env` files, keys, or credential files. Never print environment
