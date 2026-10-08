@@ -9,6 +9,7 @@
 fpath=(
   $HOMEBREW_PREFIX/share/zsh/site-functions(N/)   # Homebrew formulae: aws, kubectl, gh, ...
   $HOMEBREW_PREFIX/share/zsh-completions(N/)
+  $HOMEBREW_PREFIX/opt/rustup/share/zsh/site-functions(N/)   # keg-only rustup: _cargo
   $HOME/.docker/completions(N/)
   $fpath
 )
