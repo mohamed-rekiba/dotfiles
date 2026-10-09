@@ -14,3 +14,6 @@ Desktop.ini
 *.swp
 .idea/
 **/.claude/settings.local.json
+
+# MCP servers and AI tools: local caches and output
+.playwright-mcp
